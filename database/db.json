@@ -1,0 +1,260 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "HP Omen",
+      "category": "Notebook",
+      "price": "1000$",
+      "quantity": 3,
+      "available": 1
+    },
+    {
+      "id": 2,
+      "name": "Asus ROG",
+      "category": "Notebook",
+      "price": "1000$",
+      "quantity": 3,
+      "available": 0
+    },
+    {
+      "id": 3,
+      "name": "Intel Xeon",
+      "category": "CPU",
+      "price": "1000$",
+      "quantity": 3,
+      "available": 1
+    },
+    {
+      "id": 4,
+      "name": "Intel core i5 12450H",
+      "category": "CPU",
+      "price": "1000$",
+      "quantity": 3,
+      "available": 0
+    },
+    {
+      "id": 5,
+      "name": "Nvidia RTX 5080 TI",
+      "category": "GPU",
+      "price": "1000$",
+      "quantity": 3,
+      "available": 0
+    },
+    {
+      "id": 6,
+      "name": "AMD Radeon RX 7900 XTX",
+      "category": "GPU",
+      "price": "1000$",
+      "quantity": 3,
+      "available": 1
+    },
+    {
+      "id": 7,
+      "name": "AMD Radeon RX 7900 XTX",
+      "category": "GPU",
+      "price": "1000$",
+      "quantity": 3,
+      "available": 1
+    },
+    {
+      "id": 8,
+      "name": "AMD Radeon RX 7900 XTX",
+      "category": "GPU",
+      "price": "1000$",
+      "quantity": 3,
+      "available": 1
+    },
+    {
+      "id": 9,
+      "name": "AMD Radeon RX 7900 XTX",
+      "category": "GPU",
+      "price": "1000$",
+      "quantity": 3,
+      "available": 1
+    },
+    {
+      "id": 10,
+      "name": "AMD Radeon RX 7900 XTX",
+      "category": "GPU",
+      "price": "1000$",
+      "quantity": 3,
+      "available": 1
+    },
+    {
+      "id": 11,
+      "name": "AMD Radeon RX 7900 XTX",
+      "category": "GPU",
+      "price": "1000$",
+      "quantity": 3,
+      "available": 1
+    },
+    {
+      "id": 12,
+      "name": "AMD Radeon RX 7900 XTX",
+      "category": "GPU",
+      "price": "1000$",
+      "quantity": 3,
+      "available": 1
+    },
+    {
+      "id": 13,
+      "name": "AMD Radeon RX 7900 XTX",
+      "category": "GPU",
+      "price": "1000$",
+      "quantity": 3,
+      "available": 1
+    },
+    {
+      "id": 14,
+      "name": "AMD Radeon RX 7900 XTX",
+      "category": "GPU",
+      "price": "1000$",
+      "quantity": 3,
+      "available": 1
+    },
+    {
+      "id": 15,
+      "name": "AMD Radeon RX 7900 XTX",
+      "category": "GPU",
+      "price": "1000$",
+      "quantity": 3,
+      "available": 1
+    },
+    {
+      "id": 16,
+      "name": "AMD Radeon RX 7900 XTX",
+      "category": "GPU",
+      "price": "1000$",
+      "quantity": 3,
+      "available": 1
+    },
+    {
+      "id": 17,
+      "name": "AMD Radeon RX 7900 XTX",
+      "category": "GPU",
+      "price": "1000$",
+      "quantity": 3,
+      "available": 1
+    },
+    {
+      "id": 18,
+      "name": "AMD Radeon RX 7900 XTX",
+      "category": "GPU",
+      "price": "1000$",
+      "quantity": 3,
+      "available": 1
+    },
+    {
+      "id": 19,
+      "name": "AMD Radeon RX 7900 XTH",
+      "category": "GPU",
+      "price": "9999$",
+      "quantity": 3,
+      "available": 1
+    },
+    {
+      "name": "AMD Radeon RX 7900 XTH",
+      "category": "GPU",
+      "price": "9999$",
+      "quantity": 3,
+      "available": 1,
+      "id": 20
+    },
+    {
+      "name": "AMD Radeon RX 7900 XTH",
+      "category": "GPU",
+      "price": "9999$",
+      "quantity": 3,
+      "available": 1,
+      "id": 21
+    },
+    {
+      "name": "qwe",
+      "category": "qwe",
+      "price": "qwe",
+      "quantity": "qwe",
+      "available": 1,
+      "id": 22
+    },
+    {
+      "name": "Zdarova",
+      "category": "Normasa",
+      "price": "1929$",
+      "quantity": "qweqwyuqru",
+      "available": 0,
+      "id": 23
+    },
+    {
+      "name": "qweqwe",
+      "category": "qwe",
+      "price": "qwe",
+      "quantity": "qwe",
+      "available": 1,
+      "id": 24
+    },
+    {
+      "name": "123",
+      "category": "123",
+      "price": "123",
+      "quantity": "123",
+      "available": 1,
+      "id": 25
+    },
+    {
+      "name": "qwertyuiop",
+      "category": "123456789898",
+      "price": "4566554564",
+      "quantity": "546654546",
+      "available": 1,
+      "id": 26
+    },
+    {
+      "name": "Halo",
+      "category": "Halo",
+      "price": "Halo",
+      "quantity": "Halo",
+      "available": 1,
+      "id": 27
+    },
+    {
+      "name": "Crysis ",
+      "category": "Crysis ",
+      "price": "Crysis ",
+      "quantity": "Crysis",
+      "available": 1,
+      "id": 28
+    },
+    {
+      "name": "qweqew",
+      "category": "qweqewq",
+      "price": "qwe",
+      "quantity": "qwe",
+      "available": 1,
+      "id": 29
+    },
+    {
+      "name": "sssss",
+      "category": "ssss",
+      "price": "sss",
+      "quantity": "ssss",
+      "available": 1,
+      "id": 30
+    },
+    {
+      "name": "sss",
+      "category": "sss",
+      "price": "sss",
+      "quantity": "sss",
+      "available": 1,
+      "id": 31
+    },
+    {
+      "name": "qweqweqwe",
+      "category": "qweqweeqwqwwew",
+      "price": "asfasfqw",
+      "quantity": "weqweqw",
+      "available": 1,
+      "id": 32
+    }
+  ]
+}
