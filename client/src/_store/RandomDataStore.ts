@@ -11,7 +11,7 @@ const formFieldsInitialState = {
 const limit: number = 5;
 
 class RandomDataStore {
-  isInfiniteLoaderContainerHidden: boolean = false;
+  isInfiniteLoaderContainerHidden: boolean = true;
   formFields: any = formFieldsInitialState;
   infiniteLoader: boolean = false;
   dialogScreen: boolean = false;
@@ -23,6 +23,9 @@ class RandomDataStore {
     makeAutoObservable(this);
   }
 
+  private showInfiniteLoaderContainer = () => {
+    this.isInfiniteLoaderContainerHidden = false;
+  };
   private hideInfiniteLoaderContainer = () => {
     this.isInfiniteLoaderContainerHidden = true;
   };
@@ -104,6 +107,7 @@ class RandomDataStore {
       );
       const data = await response.json();
       this.randomData = data;
+      this.showInfiniteLoaderContainer();
     } catch (error) {
       console.log(error);
     } finally {

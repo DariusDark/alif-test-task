@@ -2,7 +2,7 @@ import { Box, Button, Tooltip } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import ClearIcon from "@mui/icons-material/Clear";
 
-const ActionButton = withStyles((theme) => {
+const ActionButton = withStyles((theme: any) => {
   return {
     root: {
       padding: 5,
@@ -22,13 +22,17 @@ const ActionButton = withStyles((theme) => {
   };
 })(({ title, children, ...restProps }: any) => (
   <Tooltip title={title} arrow>
-    <Box variant="span">
-      <Button {...restProps}>{children}</Button>
-    </Box>
+    <Button {...restProps}>{children}</Button>
   </Tooltip>
 ));
 
-export const DeleteButton = ({ title = "Удалить", onClick }) => {
+export const DeleteButton = ({
+  title = "Удалить",
+  onClick,
+}: {
+  title?: string;
+  onClick: CallableFunction;
+}) => {
   return (
     <ActionButton title={title} onClick={onClick}>
       <ClearIcon />
