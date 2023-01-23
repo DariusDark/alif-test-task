@@ -1,10 +1,15 @@
 import { Grid, MenuItem, TextField } from "@mui/material";
 import { observer } from "mobx-react-lite";
-import { useMemo } from "react";
+import { BaseSyntheticEvent, ChangeEvent } from "react";
 import Form from "../../_components/Form/Form";
+import {
+  IFields,
+  ISelectFields,
+  ISelectOptions,
+} from "../../_interfaces/RandomDataForm";
 import RandomDataStore from "../../_store/RandomDataStore";
 
-const selectOptions = [
+const selectOptions: ISelectOptions[] = [
   { value: 1, label: "Yes" },
   { value: 0, label: "No" },
 ];
@@ -33,7 +38,7 @@ const RandomDataForm = () => {
     );
   };
 
-  const fields = [
+  const fields: IFields[] = [
     { name: "name", label: "Name", type: "string", value: formFields.name },
     {
       name: "category",
@@ -50,7 +55,7 @@ const RandomDataForm = () => {
     },
   ];
 
-  const selectFields = [
+  const selectFields: ISelectFields[] = [
     {
       name: "available",
       label: "Available",
@@ -60,18 +65,18 @@ const RandomDataForm = () => {
     },
   ];
 
-  const handleChangeField = (event: any) => {
+  const handleChangeField = (event: BaseSyntheticEvent) => {
     const { name, value } = event.target;
     changeField(name, value);
   };
 
-  const fieldsParser = fields.map((fieldOpts) => (
+  const fieldsParser = fields.map((fieldOpts: IFields) => (
     <Grid item key={fieldOpts.name}>
       <TextField {...fieldOpts} fullWidth onChange={handleChangeField} />
     </Grid>
   ));
 
-  const selectFieldsParser = selectFields.map((fieldOptions) => (
+  const selectFieldsParser = selectFields.map((fieldOptions: ISelectFields) => (
     <Grid item key={fieldOptions.name}>
       <TextField {...fieldOptions} fullWidth onChange={handleChangeField}>
         {selectOptions.map((selectOptions) => (
@@ -85,6 +90,7 @@ const RandomDataForm = () => {
 
   return (
     <Form
+      submitButtonText="Create"
       submitHandler={submitRandomData}
       open={dialogScreen}
       onClose={closeDialogScreen}

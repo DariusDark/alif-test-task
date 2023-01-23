@@ -1,12 +1,13 @@
-import { Box, Button, Tooltip } from "@mui/material";
+import { Button, Theme, Tooltip } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import ClearIcon from "@mui/icons-material/Clear";
+import { IAction } from "../../_interfaces/TableActions";
 
-const ActionButton = withStyles((theme: any) => {
+const ActionButton = withStyles((theme: Theme) => {
   return {
     root: {
       padding: 5,
-      minWidth: 30,
+      minWidth: "30px !important",
       maxWidth: 30,
       minHeight: 30,
       maxHeight: 30,
@@ -20,19 +21,13 @@ const ActionButton = withStyles((theme: any) => {
       },
     },
   };
-})(({ title, children, ...restProps }: any) => (
+})(({ title, children, ...restProps }: any) => ( //TYPE
   <Tooltip title={title} arrow>
     <Button {...restProps}>{children}</Button>
   </Tooltip>
 ));
 
-export const DeleteButton = ({
-  title = "Удалить",
-  onClick,
-}: {
-  title?: string;
-  onClick: CallableFunction;
-}) => {
+export const DeleteButton = ({ title = "Удалить", onClick }: IAction) => {
   return (
     <ActionButton title={title} onClick={onClick}>
       <ClearIcon />

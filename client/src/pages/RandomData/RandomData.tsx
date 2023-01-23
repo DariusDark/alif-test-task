@@ -1,9 +1,8 @@
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import WindowLoader from "../../_components/WindowLoader/WindowLoader";
 import RandomDataStore from "../../_store/RandomDataStore";
 import { observer } from "mobx-react-lite";
-import { Box, Grid, MenuItem, TextField } from "@mui/material";
-import Form from "../../_components/Form/Form";
+import { Box} from "@mui/material";
 import RandomDataTable from "./RandomDataTable";
 import RandomDataForm from "./RandomDataForm";
 

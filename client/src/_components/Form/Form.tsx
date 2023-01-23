@@ -6,6 +6,7 @@ import {
   DialogContent,
   DialogTitle,
 } from "@mui/material";
+import { IForm } from "../../_interfaces/Form";
 
 const Form = ({
   children,
@@ -17,7 +18,7 @@ const Form = ({
   buttonText,
   isValidated = true,
   submitButtonText = "Submit",
-}: any) => {
+}: IForm) => {
   const handleSubmit = () => {
     submitHandler();
     onClose();

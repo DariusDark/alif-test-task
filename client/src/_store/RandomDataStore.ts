@@ -1,6 +1,7 @@
 import { makeAutoObservable } from "mobx";
+import { IFormFieldsInitialState } from "../_interfaces/RandomDataStore";
 
-const formFieldsInitialState = {
+const formFieldsInitialState: IFormFieldsInitialState = {
   name: "",
   category: "",
   price: "",
@@ -11,8 +12,9 @@ const formFieldsInitialState = {
 const limit: number = 5;
 
 class RandomDataStore {
+  // TYPE
   isInfiniteLoaderContainerHidden: boolean = true;
-  formFields: any = formFieldsInitialState;
+  formFields: IFormFieldsInitialState = formFieldsInitialState;
   infiniteLoader: boolean = false;
   dialogScreen: boolean = false;
   loader: boolean = false;
@@ -55,7 +57,6 @@ class RandomDataStore {
   };
 
   public openDialogScreen = () => {
-    console.log("work");
     this.dialogScreen = true;
   };
 
@@ -65,6 +66,7 @@ class RandomDataStore {
   };
 
   public changeField = (name: string, value: string) => {
+    //TYPE жалуется что "Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'IFormFieldsInitialState'."
     this.formFields[name] = value;
   };
 

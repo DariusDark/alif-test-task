@@ -1,8 +1,8 @@
-import { ThemeProvider, createTheme } from "@mui/material";
+import { ThemeProvider, createTheme, Theme } from "@mui/material";
 import { green } from "@mui/material/colors";
 
-const MuiTheme = ({ children }: any) => {
-  const theme = createTheme({
+const MuiTheme = ({ children }: any) => { //TYPE
+  const theme: Theme = createTheme({
     palette: {
       primary: {
         main: "#5c7ca3",

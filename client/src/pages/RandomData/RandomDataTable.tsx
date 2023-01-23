@@ -14,6 +14,7 @@ import { observer } from "mobx-react-lite";
 import { useMemo } from "react";
 import { NoResultTitle } from "../../_components/NoResultTitle/NoResultTitle";
 import { DeleteButton } from "../../_components/TableActions/TableActions";
+import { ITableHeadCells } from "../../_interfaces/RandomDataTable";
 import RandomDataStore from "../../_store/RandomDataStore";
 
 const useStyles: any = makeStyles(() => ({
@@ -23,12 +24,36 @@ const useStyles: any = makeStyles(() => ({
   },
 }));
 
+const tableHeadCells: ITableHeadCells[] = [
+  {
+    label: "ID",
+  },
+  {
+    label: "Name",
+  },
+  {
+    label: "Category",
+  },
+  {
+    label: "Price",
+  },
+  {
+    label: "Quantity",
+  },
+  {
+    label: "Available",
+  },
+  // {
+  //   label: "Actions",
+  // },
+];
+
 const RandomDataTable = () => {
   const { randomData, infiniteLoader, isInfiniteLoaderContainerHidden } =
     RandomDataStore;
   const classes = useStyles();
 
-  const handleDelete = (id: number) => {};
+  // const handleDelete = (id: number) => {};
 
   const randomDataParser = useMemo(() => {
     return randomData.map((item: any) => (
@@ -39,40 +64,26 @@ const RandomDataTable = () => {
         <TableCell align="center">{item.price}</TableCell>
         <TableCell align="center">{item.quantity}</TableCell>
         <TableCell align="center">{item.available ? "Yes" : "No"}</TableCell>
-        <TableCell align="center">
+        {/* <TableCell align="center">
           <DeleteButton onClick={handleDelete} />
-        </TableCell>
+        </TableCell> */}
       </TableRow>
     ));
   }, [randomData]);
+
+  const tableHeadCellsParser = useMemo(() => {
+    return tableHeadCells.map((tableCell, index) => (
+      <TableCell key={index} align="center" className={classes["tableHeadCell"]}>
+        {tableCell.label}
+      </TableCell>
+    ));
+  }, [tableHeadCells]);
 
   return (
     <TableContainer component={Paper} sx={{ maxHeight: "400px" }}>
       <Table stickyHeader>
         <TableHead>
-          <TableRow>
-            <TableCell align="center" className={classes["tableHeadCell"]}>
-              ID
-            </TableCell>
-            <TableCell align="center" className={classes["tableHeadCell"]}>
-              Name
-            </TableCell>
-            <TableCell align="center" className={classes["tableHeadCell"]}>
-              Category
-            </TableCell>
-            <TableCell align="center" className={classes["tableHeadCell"]}>
-              Price
-            </TableCell>
-            <TableCell align="center" className={classes["tableHeadCell"]}>
-              Quantity
-            </TableCell>
-            <TableCell align="center" className={classes["tableHeadCell"]}>
-              Available
-            </TableCell>
-            <TableCell align="center" className={classes["tableHeadCell"]}>
-              Actions
-            </TableCell>
-          </TableRow>
+          <TableRow>{tableHeadCellsParser}</TableRow>
         </TableHead>
         <TableBody>{randomDataParser}</TableBody>
       </Table>
