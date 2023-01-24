@@ -19,7 +19,7 @@ const RandomDataForm = () => {
     formFields,
     dialogScreen,
     changeField,
-    submitRandomData,
+    postProductData: submitRandomData,
     openDialogScreen,
     closeDialogScreen,
   } = RandomDataStore;

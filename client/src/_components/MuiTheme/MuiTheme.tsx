@@ -1,7 +1,8 @@
 import { ThemeProvider, createTheme, Theme } from "@mui/material";
 import { green } from "@mui/material/colors";
+import { PropsWithChildren } from "react";
 
-const MuiTheme = ({ children }: any) => { //TYPE
+const MuiTheme = ({ children }: PropsWithChildren) => {
   const theme: Theme = createTheme({
     palette: {
       primary: {

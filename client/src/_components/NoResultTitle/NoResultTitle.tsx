@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import DATABASE_ICON from "../../_assets/database.svg";
 
-const useStyles: any = makeStyles(() => ({ //TYPE
+const useStyles = makeStyles(() => ({
   img: { maxHeight: "80px", display: "block", margin: "0px auto"},
 }));
 

@@ -13,7 +13,6 @@ import { makeStyles } from "@mui/styles";
 import { observer } from "mobx-react-lite";
 import { useMemo } from "react";
 import { NoResultTitle } from "../../_components/NoResultTitle/NoResultTitle";
-import { DeleteButton } from "../../_components/TableActions/TableActions";
 import { ITableHeadCells } from "../../_interfaces/RandomDataTable";
 import RandomDataStore from "../../_store/RandomDataStore";
 
@@ -43,14 +42,14 @@ const tableHeadCells: ITableHeadCells[] = [
   {
     label: "Available",
   },
-  // {
-  //   label: "Actions",
-  // },
 ];
 
 const RandomDataTable = () => {
-  const { randomData, infiniteLoader, isInfiniteLoaderContainerHidden } =
-    RandomDataStore;
+  const {
+    products: randomData,
+    infiniteLoader,
+    isInfiniteLoaderContainerHidden,
+  } = RandomDataStore;
   const classes = useStyles();
 
   // const handleDelete = (id: number) => {};
@@ -64,16 +63,17 @@ const RandomDataTable = () => {
         <TableCell align="center">{item.price}</TableCell>
         <TableCell align="center">{item.quantity}</TableCell>
         <TableCell align="center">{item.available ? "Yes" : "No"}</TableCell>
-        {/* <TableCell align="center">
-          <DeleteButton onClick={handleDelete} />
-        </TableCell> */}
       </TableRow>
     ));
   }, [randomData]);
 
   const tableHeadCellsParser = useMemo(() => {
     return tableHeadCells.map((tableCell, index) => (
-      <TableCell key={index} align="center" className={classes["tableHeadCell"]}>
+      <TableCell
+        key={index}
+        align="center"
+        className={classes["tableHeadCell"]}
+      >
         {tableCell.label}
       </TableCell>
     ));

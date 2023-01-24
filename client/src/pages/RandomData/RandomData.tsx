@@ -2,33 +2,26 @@ import { useEffect } from "react";
 import WindowLoader from "../../_components/WindowLoader/WindowLoader";
 import RandomDataStore from "../../_store/RandomDataStore";
 import { observer } from "mobx-react-lite";
-import { Box} from "@mui/material";
+import { Box } from "@mui/material";
 import RandomDataTable from "./RandomDataTable";
 import RandomDataForm from "./RandomDataForm";
 
+const handleInfiniteScroll = (entries: IntersectionObserverEntry[]) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      RandomDataStore.showInfiniteLoader();
+      RandomDataStore.increasePageCount();
+    } else {
+      RandomDataStore.hideInfiniteLoader();
+    }
+  });
+};
+
+const intersectionObserver = new IntersectionObserver(handleInfiniteScroll);
+
 const RandomData = () => {
-  const {
-    page,
-    loader,
-    getRandomFields,
-    increasePageCount,
-    showInfiniteLoader,
-    hideInfiniteLoader,
-    resetRandomDataStore,
-  } = RandomDataStore;
-
-  const handleInfiniteScroll = (entries: IntersectionObserverEntry[]) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        showInfiniteLoader();
-        increasePageCount();
-      } else {
-        hideInfiniteLoader();
-      }
-    });
-  };
-
-  const intersectionObserver = new IntersectionObserver(handleInfiniteScroll);
+  const { page, loader, getProductsData: getRandomFields, resetRandomDataStore } =
+    RandomDataStore;
 
   useEffect(() => {
     const controller: AbortController = new AbortController();

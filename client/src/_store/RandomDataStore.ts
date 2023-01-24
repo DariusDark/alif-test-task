@@ -1,7 +1,8 @@
 import { makeAutoObservable } from "mobx";
-import { IFormFieldsInitialState } from "../_interfaces/RandomDataStore";
+import { api } from "../api";
+import { ProductType } from "../_interfaces/RandomDataStore";
 
-const formFieldsInitialState: IFormFieldsInitialState = {
+const formFieldsInitialState: Omit<ProductType, "id"> = {
   name: "",
   category: "",
   price: "",
@@ -9,84 +10,74 @@ const formFieldsInitialState: IFormFieldsInitialState = {
   available: "",
 };
 
-const limit: number = 5;
+const LIMIT = 5;
 
 class RandomDataStore {
   // TYPE
-  isInfiniteLoaderContainerHidden: boolean = true;
-  formFields: IFormFieldsInitialState = formFieldsInitialState;
-  infiniteLoader: boolean = false;
-  dialogScreen: boolean = false;
-  loader: boolean = false;
-  randomData: any = [];
-  page: number = 1;
+  isInfiniteLoaderContainerHidden = true;
+  formFields = formFieldsInitialState;
+  infiniteLoader = false;
+  dialogScreen = false;
+  loader = false;
+  products: ProductType[] = [];
+  page = 1;
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  private showInfiniteLoaderContainer = () => {
+  showInfiniteLoaderContainer = () => {
     this.isInfiniteLoaderContainerHidden = false;
   };
-  private hideInfiniteLoaderContainer = () => {
+  hideInfiniteLoaderContainer = () => {
     this.isInfiniteLoaderContainerHidden = true;
   };
 
-  public increasePageCount = async () => {
+  increasePageCount = async () => {
     this.page += 1;
     try {
-      const response = await fetch(
-        `http://localhost:3000/data?_page=${this.page}&_limit=${limit}`
-      );
-      const data = await response.json();
-      if (data.length !== limit) {
+      const products = await api.getProducts(this.page, LIMIT);
+
+      if (products.length !== LIMIT) {
         this.hideInfiniteLoaderContainer();
       }
-      this.randomData = [...this.randomData, ...data];
+      this.products = [...this.products, ...products];
     } catch (error) {
       console.log(error);
     }
   };
 
-  public showInfiniteLoader = () => {
+  showInfiniteLoader = () => {
     this.infiniteLoader = true;
   };
 
-  public hideInfiniteLoader = () => {
+  hideInfiniteLoader = () => {
     this.infiniteLoader = false;
   };
 
-  public openDialogScreen = () => {
+  openDialogScreen = () => {
     this.dialogScreen = true;
   };
 
-  public closeDialogScreen = () => {
+  closeDialogScreen = () => {
     this.dialogScreen = false;
     this.formFields = formFieldsInitialState;
   };
 
-  public changeField = (name: string, value: string) => {
-    //TYPE жалуется что "Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'IFormFieldsInitialState'."
+  changeField = (name: keyof Omit<ProductType, "id">, value: string) => {
     this.formFields[name] = value;
   };
 
-  private setLoader = (loaderState: boolean) => {
+  setLoader = (loaderState: boolean) => {
     this.loader = loaderState;
   };
 
-  public submitRandomData = async () => {
+  postProductData = async () => {
     this.setLoader(true);
     try {
-      const response = await fetch("http://localhost:3000/data", {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-        body: JSON.stringify(this.formFields),
-      });
       if (this.isInfiniteLoaderContainerHidden) {
-        const data = await response.json();
-        this.randomData = [...this.randomData, data];
+        const product = await api.postProduct(this.formFields);
+        this.products = [...this.products, product];
       }
     } catch (error) {
       console.log(error);
@@ -95,20 +86,11 @@ class RandomDataStore {
     }
   };
 
-  public getRandomFields = async (
-    signal: AbortSignal | undefined,
-    page: number
-  ) => {
+  getProductsData = async (signal: AbortSignal | undefined, page: number) => {
     this.setLoader(true);
     try {
-      const response = await fetch(
-        `http://localhost:3000/data?_page=${page}&_limit=${limit}`,
-        {
-          signal,
-        }
-      );
-      const data = await response.json();
-      this.randomData = data;
+      const products = await api.getProducts(page, LIMIT, { signal });
+      this.products = products;
       this.showInfiniteLoaderContainer();
     } catch (error) {
       console.log(error);
@@ -117,10 +99,10 @@ class RandomDataStore {
     }
   };
 
-  public resetRandomDataStore = () => {
+  resetRandomDataStore = () => {
     this.loader = false;
     this.dialogScreen = false;
-    this.randomData = [];
+    this.products = [];
     this.formFields = formFieldsInitialState;
     this.page = 1;
     this.isInfiniteLoaderContainerHidden = false;
